@@ -1,4 +1,5 @@
 import React from "react";
+import api from "../api/api";
 import {
   Input,
   Radio,
@@ -65,9 +66,9 @@ export const newClassForm = (() => {
           </div>
 
           <Button htmlType="submit" type="primary">
-            {props.method != "update" ? "Submit" : "Update"}
+            {props.method != "put" ? "Submit" : "Update"}
           </Button>
-          {props.method == "update" && (
+          {props.method == "put" && (
             <Button onClick={props.handleDelete} type="danger">
               Delete
             </Button>
@@ -96,18 +97,20 @@ export const newClassForm = (() => {
     return field[props.formType];
   };
   //
-  const dbPath = (props, values) => {
-    const dbMethod = {
-      add: () => {},
-      update: () => {},
-      delete: () => {},
-      get: () => {
-        return [{ level: "test", name: "test name", topic: "topic here" }];
-      }
-    };
-    return dbMethod[props.method];
+  const dbPath = {
+    post: (props, submitValues) => {
+      return api(props, submitValues);
+    },
+    put: (props, submitValues) => {
+      return api(props, submitValues);
+    },
+    delete: props => {
+      return api(props);
+    },
+    get: props => {
+      return api(props);
+    }
   };
-
   return {
     fields: fields,
     dbPath: dbPath
