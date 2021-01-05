@@ -46,7 +46,7 @@
         "@fullcalendar/react": "^4.3.0",
         "@fullcalendar/timegrid": "^4.3.0",
         "antd": "^3.26.7",
-        "axios": "^0.19.1",
+        "axios": "^0.21.1",
         "babel-plugin-transform-class-properties": "^6.24.1",
         "body-parser": "^1.19.0",
         "bootstrap": "^4.4.1",
